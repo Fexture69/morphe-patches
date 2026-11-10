@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-10T22:30:10",
-  "description": "## [1.24.0](https://github.com/Fexture69/morphe-patches/compare/v1.23.1...v1.24.0) (2026-11-10)\n\n### ✨ New Features\n\n* **adguard:** update AdGuard unlock lifetime patch for latest phone build ([ba8d744](https://github.com/Fexture69/morphe-patches/commit/ba8d7443408df23123240eb2d2c548f0ae468985))",
-  "download_url": "https://github.com/Fexture69/morphe-patches/releases/download/v1.24.0/patches-1.24.0.mpp",
+  "created_at": "2026-11-10T23:21:45",
+  "description": "## [1.25.0](https://github.com/Fexture69/morphe-patches/compare/v1.24.0...v1.25.0) (2026-11-10)\n\n### ✨ New Features\n\n* **life360:** update fingerprints and premium unlock patch ([69f1c21](https://github.com/Fexture69/morphe-patches/commit/69f1c215aac268af350fd28f4bc6aa0643e574c9))",
+  "download_url": "https://github.com/Fexture69/morphe-patches/releases/download/v1.25.0/patches-1.25.0.mpp",
   "signature_download_url": "",
-  "version": "1.24.0"
+  "version": "1.25.0"
 }
