@@ -1,3 +1,9 @@
+## [1.25.0](https://github.com/Fexture69/morphe-patches/compare/v1.24.0...v1.25.0) (2026-11-10)
+
+### ✨ New Features
+
+* **life360:** update fingerprints and premium unlock patch ([69f1c21](https://github.com/Fexture69/morphe-patches/commit/69f1c215aac268af350fd28f4bc6aa0643e574c9))
+
 ## [1.24.0](https://github.com/Fexture69/morphe-patches/compare/v1.23.1...v1.24.0) (2026-11-10)
 
 ### ✨ New Features
