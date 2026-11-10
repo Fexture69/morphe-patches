@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-28T18:14:42",
-  "description": "## [1.23.1](https://github.com/rushiranpise/morphe-patches/compare/v1.23.0...v1.23.1) (2026-10-28)\n\n### 🐛 Bug Fixes\n\n* **batteryguru:** support 2.5.0.9 ([3e2f1b7](https://github.com/rushiranpise/morphe-patches/commit/3e2f1b79993124503586ad1b51321b64071863f7))\n* **batterypods:** support 8.32 and suppress ads ([4a10a24](https://github.com/rushiranpise/morphe-patches/commit/4a10a24c39b4088bec36767146841c34eee4d0a9))",
-  "download_url": "https://github.com/rushiranpise/morphe-patches/releases/download/v1.23.1/patches-1.23.1.mpp",
+  "created_at": "2026-11-10T22:30:10",
+  "description": "## [1.24.0](https://github.com/Fexture69/morphe-patches/compare/v1.23.1...v1.24.0) (2026-11-10)\n\n### ✨ New Features\n\n* **adguard:** update AdGuard unlock lifetime patch for latest phone build ([ba8d744](https://github.com/Fexture69/morphe-patches/commit/ba8d7443408df23123240eb2d2c548f0ae468985))",
+  "download_url": "https://github.com/Fexture69/morphe-patches/releases/download/v1.24.0/patches-1.24.0.mpp",
   "signature_download_url": "",
-  "version": "1.23.1"
+  "version": "1.24.0"
 }
