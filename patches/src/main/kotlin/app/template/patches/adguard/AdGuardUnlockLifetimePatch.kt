@@ -16,13 +16,13 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
  *
  * AdGuard's license state flows through a sealed class hierarchy:
  *
- *   PlusState (interface I0/i or G0/i depending on version)
+ *   PlusState (interface K0/i, I0/i or G0/i depending on version)
  *   ├── PaidLicense  — active license/subscription
  *   │     fields: licenseKey, licenseType, licenseDuration, devCount, maxDevCount, keyOwner
  *   ├── Free, Trial, Expired*, Blocked*, CachedFree, CachedPaid, CachedTrial, Unknown
  *
  *   LicenseDuration
- *   ├── Lifetime     — singleton object (I0/i$l$a or G0/i$l$a)
+ *   ├── Lifetime     — singleton object (K0/i$l$a, I0/i$l$a or G0/i$l$a)
  *   └── WithExpirationDate, WithNextBillingDate, Unknown
  *
  *   LicenseType (enum) — Custom, Unknown, Personal, Family, Standard, Beta, Bonus
@@ -65,8 +65,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
  * ## Version matrix
  *
  *   Version       | Build  | PlusManager | PlusState   | Verified
+ *   Latest phone  | phone  | [Dynamic]   | K0/i        | ✓ (this update)
  *   4.14.0 phone  | phone  | D0/b        | G0/i        | ✓ (original)
- *   4.13.1 phone  | phone  | F0/b        | I0/i        | ✓ (this update)
+ *   4.13.1 phone  | phone  | F0/b        | I0/i        | ✓ (original)
  *   4.13.0 TV     | TV     | F0/b        | I0/i        | ✓ (original)
  *
  * All fingerprints use stable non-obfuscated anchors (developer log strings,
