@@ -1,3 +1,9 @@
+## [1.24.0](https://github.com/Fexture69/morphe-patches/compare/v1.23.1...v1.24.0) (2026-11-10)
+
+### ✨ New Features
+
+* **adguard:** update AdGuard unlock lifetime patch for latest phone build ([ba8d744](https://github.com/Fexture69/morphe-patches/commit/ba8d7443408df23123240eb2d2c548f0ae468985))
+
 ## [1.23.1](https://github.com/rushiranpise/morphe-patches/compare/v1.23.0...v1.23.1) (2026-10-28)
 
 ### 🐛 Bug Fixes
