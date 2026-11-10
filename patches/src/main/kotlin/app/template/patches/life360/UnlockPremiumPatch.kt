@@ -47,8 +47,6 @@ val life360UnlockPremiumPatch = bytecodePatch(
             FeatureSetIsAvailableFingerprint,
             FeatureSetIsEnabledForAnyCircleFingerprint,
             FeatureSetIsEnabledForCircleFingerprint,
-            FeaturesAccessIsEnabledForActiveCircleFingerprint,
-            FeaturesAccessIsEnabledForAnyCircleFingerprint,
             FeatureSetIsOnVictimOnlyCollisionDispatchAvailableFingerprint,
             FeatureSetIsOnVictimOnlyPremiumSosAvailableFingerprint,
         ).forEach { fingerprint ->
@@ -99,11 +97,6 @@ val life360UnlockPremiumPatch = bytecodePatch(
                 )
             }
         }
-
-        // FIX: All Map-returning methods MUST return LinkedHashMap, not Collections.singletonMap().
-        // Callers in DefaultMembershipUtil cast the result to LinkedHashMap explicitly:
-        //   return (LinkedHashMap) featureSetEntitlementManager.resolveLocationHistoryPerSkus(premium)
-        // Collections.singletonMap() returns SingletonMap → ClassCastException → app crash.
 
         FeatureSetResolveLocationHistoryPerSkusFingerprint.method.apply {
             ensureRegisters(4)
@@ -485,39 +478,6 @@ val life360UnlockPremiumPatch = bytecodePatch(
             )
         }
 
-        // FeaturesAccess integer gates — server delivers numeric limits (e.g. place_alerts = 3 on free).
-        // Return MAX_VALUE so every numeric limit check passes (free tier: typically 3 alerts, 0 history days).
-        listOf(
-            FeaturesAccessGetIntForCircleFingerprint,
-            FeaturesAccessGetIntFingerprint,
-        ).forEach { fingerprint ->
-            fingerprint.method.apply {
-                clearBody()
-                addInstructions(
-                    0,
-                    """
-                        const v0, 0x7fffffff
-                        return v0
-                    """.trimIndent(),
-                )
-            }
-        }
-
-        // FeaturesAccess boolean gates — server delivers boolean feature flags per circle.
-        // Return true for all boolean feature checks.
-        FeaturesAccessIsEnabledFingerprint.method.apply {
-            clearBody()
-            addInstructions(
-                0,
-                """
-                    const/4 v0, 0x1
-                    return v0
-                """.trimIndent(),
-            )
-        }
-
-        // CircleFeatures.isPremium() — local DB model read by map/switcher UI.
-        // Normally checks for non-null skuId; patch to always return true.
         CircleFeatureIsPremiumFingerprint.method.apply {
             clearBody()
             addInstructions(
@@ -529,8 +489,6 @@ val life360UnlockPremiumPatch = bytecodePatch(
             )
         }
 
-        // Premium.membershipTierExperience() — return TRIPLE_TIER so Silver/Gold/Platinum
-        // upgrade screens show the full 3-tier plan picker, not the truncated 2-tier view.
         PremiumMembershipTierExperienceFingerprint.method.apply {
             clearBody()
             addInstructions(
@@ -538,20 +496,6 @@ val life360UnlockPremiumPatch = bytecodePatch(
                 """
                     sget-object v0, Lcom/life360/inapppurchase/MembershipTierExperience;->TRIPLE_TIER:Lcom/life360/inapppurchase/MembershipTierExperience;
                     return-object v0
-                """.trimIndent(),
-            )
-        }
-
-        // FeaturesAccessImpl.getLocationUpdateFreq() — return 10_000L ms (Platinum = 10 sec interval).
-        // Free=300s, Silver=120s, Gold=30s, Platinum=10s. Value is used by LocationWorker
-        // and HeartbeatReceiver to determine when to push next location update.
-        FeaturesAccessGetLocationUpdateFreqFingerprint.method.apply {
-            clearBody()
-            addInstructions(
-                0,
-                """
-                    const-wide/32 v0, 0x2710
-                    return-wide v0
                 """.trimIndent(),
             )
         }
